@@ -1,49 +1,83 @@
-# Hospital-Management-System
+# Hospital Management System
 
-## Overview
+A simple console-based Hospital Management System built with Java and MySQL for managing patients, doctors, and appointments.
 
-<br> 
-This project uses Java and SQL typically aims to create a software application that manages the operations of a hospital or clinic efficiently. This system can handle various aspects of hospital administration, such as patient records, appointments and doctor's availability.<br>
+## Features
 
-### Key Components:
+- **Patient Management**: Add new patients and view patient records
+- **Doctor Management**: View available doctors and their specializations
+- **Appointment Booking**: Schedule appointments between patients and doctors
+- **Doctor Availability**: Check if doctors are available on specific dates
 
-1. Patient Management:<br>
-   - Patient Registration: Create and maintain patient records, including personal details, medical history, and treatment plans.<br>
-   - Appointments: Schedule and manage patient appointments with doctors.<br>
-2. Medical Records Management:<br>
-   - Store and retrieve patient medical histories, diagnoses, prescriptions, and lab results.<br>
-   - Ensure secure access to sensitive information.<br>
-3. Reporting and Analytics:<br>
-   - Generate various reports, such as daily or monthly patient reports, financial reports, and inventory usage reports.<br>
-   - Analyze data for decision-making.<br>
+## Tech Stack
 
-### Technical Overview:
+- **Language**: Java
+- **Database**: MySQL
+- **JDBC Driver**: MySQL Connector/J 8.3.0
 
-- Front-End (Java):
-  - Swing/AWT: Used for creating a graphical user interface (GUI) that is user-friendly and allows hospital staff to interact with the system.
-  - JavaFX: An alternative for building modern and more sophisticated UIs.
-- Back-End (SQL):
-  - MySQL/Oracle SQL: Used for database management, storing all the data related to patients, staff, inventory, etc.
-  - SQL queries are used to perform CRUD (Create, Read, Update, Delete) operations on the database.<br>
+## Database Schema
 
-### Functionalities:
+The system uses three main tables:
+- `patients` - stores patient information (id, name, age, gender)
+- `doctors` - stores doctor details (id, name, specialization)
+- `appointments` - manages appointments (patient_id, doctor_id, appointment_date)
 
-1. User Authentication:
-   - Different roles like Admin, Doctor, Nurse, and Receptionist have access to different modules.
-   - Secure login system.
-2. Patient Admission/Discharge:
-   - Manage patient admission, transfer, and discharge processes.
-3. Electronic Medical Records (EMR):
-   - Digital version of patient records that can be accessed across the hospital.
-4. Notifications and Alerts:
-   - Automated alerts for appointments, medication schedules, and inventory restocking.<br>
+## How to Run
 
-### Project Workflow:
+1. **Prerequisites**:
+   - Java Development Kit (JDK)
+   - MySQL Server
+   - MySQL Connector/J driver
 
-1. Requirement Gathering: Understand the hospital's needs and workflow.
-2. System Design: Design the database schema and application architecture.
-3. Implementation: Develop the front-end using Java and connect it to the SQL database.
-4. Testing: Test the system for bugs and ensure it meets the hospital's requirements.
-5. Deployment: Deploy the application in the hospital environment.
-6. Maintenance: Provide ongoing support and updates.
-   This project helps in automating hospital operations, reducing paperwork, improving efficiency, and enhancing patient care.
+2. **Database Setup**:
+   - Create a MySQL database named `Hospital`
+   - Update connection details in `HospitalManagementSystem.java`:
+     ```java
+     private static final String url = "jdbc:mysql://localhost:3306/Hospital";
+     private static final String username = "your_username";
+     private static final String password = "your_password";
+     ```
+
+3. **Run the Application**:
+   ```bash
+   javac -cp ".:mysql-connector-j-8.3.0.jar" HospitalManagementSystem/*.java
+   java -cp ".:mysql-connector-j-8.3.0.jar" HospitalManagementSystem.HospitalManagementSystem
+   ```
+
+## Usage
+
+The system provides a menu-driven interface:
+1. Add Patient - Register new patients
+2. View Patients - Display all registered patients
+3. View Doctors - Show available doctors
+4. Book Appointment - Schedule patient-doctor appointments
+5. Exit - Close the application
+
+## Project Structure
+
+```
+Hospital Management System/
+├── src/
+│   ├── HospitalManagementSystem/
+│   │   ├── HospitalManagementSystem.java  # Main class
+│   │   ├── Patient.java                   # Patient operations
+│   │   └── Doctors.java                   # Doctor operations
+│   └── Main.java
+└── Hospital Management System.iml
+```
+
+## Key Learning Points
+
+- JDBC connectivity with MySQL
+- PreparedStatement usage for SQL injection prevention
+- Object-oriented design with separate classes for different entities
+- Basic exception handling
+- Console-based user interface design
+
+## Future Enhancements
+
+- Add GUI using JavaFX or Swing
+- Implement user authentication
+- Add more detailed patient medical records
+- Include billing and payment management
+- Add appointment time slots instead of just dates
